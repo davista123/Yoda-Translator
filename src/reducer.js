@@ -6,7 +6,8 @@ export default function whatIsMyName(state = {}, action){
   switch (action.type) {
     case SAY_NAME:
       return{
-        ...state
+        ...state,
+        name: action.name
       }
       break;
 
