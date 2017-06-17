@@ -2,14 +2,17 @@
 import Expo from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {Provider} from 'react-redux';
+import store from './src';
+import MainApp from './src/MainApp'
 
 class App extends React.Component {
   render() {
-    /*@flow*/
+
     return (
-      <View style={styles.container}>
-        <Text>Open up main.js to start working on your app!</Text>
-      </View>
+        <Provider store = {store}>
+          <MainApp/>
+        </Provider>
     );
   }
 }
