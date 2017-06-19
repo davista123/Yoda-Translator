@@ -1,6 +1,6 @@
-import {SAY_NAME} from './actions';
-
-
+import {
+  SAY_NAME
+} from './constants';
 
 export default function whatIsMyName(state = {}, action){
   switch (action.type) {
@@ -10,7 +10,6 @@ export default function whatIsMyName(state = {}, action){
         name: action.name
       }
       break;
-
     default:
       return state;
   }

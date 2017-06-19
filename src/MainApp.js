@@ -1,18 +1,18 @@
 import whatIsMyName from './actions';
-import reducer from './'
-
-//store.dispatch(sayName("David"))
 import React,{Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {connect} from 'react-redux'
 import store from './'
+
+import * as actions from './actionTypes';
 
 
 class MainApp extends Component{
 
   componentDidMount(){
       console.log("Initial state:",store.getState())
-      store.dispatch(sayName("David"))
+      console.log(this.props.sayName("David"))
+      this.props.sayName("David")
       console.log("Final state:",store.getState())
   }
 
@@ -34,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect()(MainApp)
+export default connect(null, actions)(MainApp)

@@ -1,7 +1,11 @@
-export const SAY_NAME =  'SAY_NAME';
+import {
+  SAY_NAME
+} from './constants';
 
-export  default sayName = (name) => {
-  return{
+import store from './'
+
+export  const sayName = (name) => {
+    return {
     type: SAY_NAME,
     name
   }
