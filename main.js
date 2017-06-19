@@ -3,15 +3,16 @@ import Expo from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {Provider} from 'react-redux';
-import store from './src';
-import MainApp from './src/MainApp'
+import store from './app';
+//import MainApp from './src/MainApp'
+import Home from './app/scenes/home/components/home';
 
 class App extends React.Component {
   render() {
 
     return (
         <Provider store = {store}>
-          <MainApp/>
+          <Home/>
         </Provider>
     );
   }
