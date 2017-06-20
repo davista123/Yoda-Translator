@@ -2,14 +2,19 @@
 import Expo from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {Provider} from 'react-redux';
+import store from './app';
+//import MainApp from './src/MainApp'
+import Home from './app/scenes/home/components/home';
+import YodaFetch from './app/scenes/home/components/yoda_fetch';
 
 class App extends React.Component {
   render() {
-    /*@flow*/
+
     return (
-      <View style={styles.container}>
-        <Text>Open up main.js to start working on your app!</Text>
-      </View>
+        <Provider store = {store}>
+          <YodaFetch/>
+        </Provider>
     );
   }
 }
