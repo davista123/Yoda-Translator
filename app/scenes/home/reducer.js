@@ -11,8 +11,10 @@ import {
 
 
 const initialState = {
+  fetched_post:'',
   post:'',
   isLoading: false,
+  errorMessage: '',
 }
 
 export default function postsReducer(state = initialState, action){
@@ -28,7 +30,7 @@ export default function postsReducer(state = initialState, action){
     case POST_TEXT_FAIL:
       return{
         ...state,
-        message: action.message
+        errorMessage: action.message
       }
       break;
 
@@ -43,6 +45,7 @@ export default function postsReducer(state = initialState, action){
     case IS_LOADING:
       return{
         ...state,
+        isLoading: true,
       }
       break;
 
@@ -50,7 +53,8 @@ export default function postsReducer(state = initialState, action){
     case FETCH_RESPONSE:
         return{
           ...state,
-          post: action.parsed_sentence
+          fetched_post: action.parsed_sentence,
+          isLoading: false
         }
       break;
 
