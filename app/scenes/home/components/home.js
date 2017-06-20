@@ -11,11 +11,15 @@ import {
 } from 'react-native';
 
 import store from '../../../';
-import {connect} from 'react-redux';
+
+import {
+  connect
+} from 'react-redux';
+
 import * as actions from '../actionTypes';
 
-//console.disableYellowBox = true;
 
+//console.disableYellowBox = true;
 class Home extends Component{
 
   constructor(){
