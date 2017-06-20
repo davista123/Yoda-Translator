@@ -4,11 +4,24 @@ import React,{
 
 import {
   View,
-  Text,
   TextInput,
-  Button,
   StyleSheet,
 } from 'react-native';
+
+import {
+  Container,
+  Content,
+  Card,
+  CardItem,
+  Text,
+  Spinner,
+  List,
+  ListItem,
+  InputGroup,
+  Icon,
+  Input,
+  Button,
+} from 'native-base'
 
 import {
   connect
@@ -18,7 +31,9 @@ import store from '../../../';
 
 import * as actions from '../actionTypes';
 
+import Expo from 'expo';
 
+console.disableYellowBox = true
 
 class YodaFetch extends Component{
 
@@ -26,45 +41,98 @@ class YodaFetch extends Component{
     super(props);
     this.state = {
       yoda_word: '',
+      fontLoaded: false
     }
     this.getYoda = this.getYoda.bind(this)
 
   }
-/*
+
   async componentWillMount(){
-    console.log("initial state:",store.getState())
-    await this.props.fetchPost("You are gifted")
-    console.log("final state:",store.getState())
+    await Expo.Font.loadAsync({
+    'Roboto': require('native-base/Fonts/Roboto.ttf'),
+    'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
+  });
+    this.setState({
+      fontLoaded:true
+    })
   }
-*/
+
+
+  renderLoading = () => {
+    return (
+      <View style={styles.container}>
+       <Spinner color='blue' />
+       </View>
+      );
+  }
+
 
   async getYoda(){
+    console.log("Initial state:", store.getState())
     await this.props.fetchPost(this.state.yoda_word)
+    console.log("Final state:", store.getState())
   }
 
-  render(){
+
+  renderContent=()=>{
     return(
       <View style = {styles.container}>
+      <Container>
+        <Content>
+
+          <Card>
+            <CardItem>
         <Text>I say: </Text>
+            </CardItem>
+          </Card>
 
-        <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          editable = {true}
-          maxLength={400}
-          onChangeText={(yoda_word) => this.setState({yoda_word})}
-          />
+        <Card>
+          <CardItem>
+                <InputGroup borderType = "rounded">
+                       <Input  placeholder="I say"
+                       onChangeText={(yoda_word) => this.setState({yoda_word})}
+                       value = {this.state.yoda_word} />
+                      <Icon name="ios-happy" />
+                </InputGroup>
+            </CardItem>
+        </Card>
 
-        <Button
-          onPress={this.getYoda}
-          title="Post"
-          color="blue"
-          accessibilityLabel="Learn more about this purple button"
-        />
+        <Button style={{ alignSelf: 'center', marginTop: 20, marginBottom: 20 }}
+            onPress = {this.getYoda}>
+            <Text>Translate</Text>
+        </Button>
 
-        <Text>
-        Yoda Says:   {this.props.fetched_post}
-        </Text>
+        <Card>
+          <CardItem>
+            <Text>
+                Yoda Says: {this.props.fetched_post}
+            </Text>
+          </CardItem>
+        </Card>
+
+        <Card>
+          <CardItem>
+            <Text>
+                {this.props.loadingText}
+            </Text>
+          </CardItem>
+        </Card>
+
+
+        </Content>
+
+      </Container>
       </View>
+    );
+  }
+
+
+  render(){
+    if(!this.state.fontLoaded){
+      return this.renderLoading();
+    }
+    return(
+        this.renderContent()
     );
   }
 }
@@ -84,6 +152,7 @@ mapStateToProps = (state) => {
     isLoading: state.postsReducer.isLoading,
     errorMessage:state.postsReducer.errorMessage,
     post: state.postsReducer.post,
+    loadingText: state.postsReducer.loadingText,
   }
 }
 

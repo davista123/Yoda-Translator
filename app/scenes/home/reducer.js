@@ -15,6 +15,8 @@ const initialState = {
   post:'',
   isLoading: false,
   errorMessage: '',
+  loadingText: '',
+
 }
 
 export default function postsReducer(state = initialState, action){
@@ -46,28 +48,31 @@ export default function postsReducer(state = initialState, action){
       return{
         ...state,
         isLoading: true,
+        loadingText: "...Thinking, Yoda is"
       }
       break;
-
 
     case FETCH_RESPONSE:
         return{
           ...state,
           fetched_post: action.parsed_sentence,
-          isLoading: false
+          isLoading: false,
+          loadingText:''
         }
       break;
 
     case FETCH_RESPONSE_SUCCESS:
         return{
             ...state,
-            sentence: action.response
+            sentence: action.response,
+            isLoading: true
         }
       break;
 
     case FINISHED_LOADING:
       return{
         ...state,
+        isLoading: false
       }
       break;
 

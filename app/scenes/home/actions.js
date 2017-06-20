@@ -35,7 +35,7 @@ export  const postSuccess = (message) => {
   }
 }
 
-export  const renderLoading = () => {
+export  const renderSpinner = () => {
     return {
     type: IS_LOADING
   }
@@ -57,12 +57,16 @@ async function getYodaPosts(url){
                             'X-Mashape-Key': "84c0Z5YMbTmsh6OTdE01YEopFjxPp1nDdF0jsnVzpZEUXXHrNk",
                             'Accept': "text/plain"
                           },
-
                         })
+
+
+    //set state to loading here
     //console.log("Response:",response)
     let sentence = response.json()
   //  console.log("Sentence: ",sentence)
     if(response){
+      //returned to the calling function and not to the store.
+      //either refactor code or get rid of redux references
       return{
         type: FETCH_RESPONSE_SUCCESS,
         response
@@ -83,10 +87,15 @@ async function getYodaPosts(url){
 
 export const fetchPost = (post) =>  async dispatch => {
   //let post = "Foo Foo is bloody expensive"
+  dispatch({
+    type: IS_LOADING,
+  })
+
   let sentence = await getYodaPosts("https://yoda.p.mashape.com/yoda?sentence="+post)
   parsed_sentence = sentence.response["_bodyText"]
   //let sentence = "Hello"
 
+  console.log("Loading phase:",store.getState())
   //https://yoda.p.mashape.com/yoda
   //console.log("Yoda says: ",parsed_sentence)
   dispatch({
