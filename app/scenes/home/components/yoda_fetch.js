@@ -19,22 +19,25 @@ import store from '../../../';
 import * as actions from '../actionTypes';
 
 
+
 class YodaFetch extends Component{
 
   constructor(props){
     super(props);
+
   }
 
   async componentWillMount(){
-    await this.props.fetchPost()
-    console.log("state:",store.getState())
+    console.log("initial state:",store.getState())
+    await this.props.fetchPost("Ginos pizza tastes very bad")
+    console.log("final state:",store.getState())
   }
 
   render(){
     return(
       <View style = {styles.container}>
         <Text>
-          This is the homepage!!!!
+          {this.props.post}
         </Text>
       </View>
     );
@@ -50,4 +53,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(null, actions)(YodaFetch)
+mapStateToProps = (state) => {
+  return{
+    post: state.postsReducer.post
+  }
+}
+
+export default connect(mapStateToProps, actions)(YodaFetch)
