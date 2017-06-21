@@ -15,9 +15,9 @@ import {
   CardItem,
   Text,
   Spinner,
-  List,
-  ListItem,
+  Header,
   InputGroup,
+  Title,
   Icon,
   Input,
   Button,
@@ -27,7 +27,7 @@ import {
   connect
 } from 'react-redux';
 
-import store from '../../../';
+//import store from '../../../';
 
 import * as actions from '../actionTypes';
 
@@ -35,7 +35,7 @@ import Expo from 'expo';
 
 console.disableYellowBox = true
 
-class YodaFetch extends Component{
+class Yoda extends Component{
 
   constructor(props){
     super(props);
@@ -47,6 +47,7 @@ class YodaFetch extends Component{
 
   }
 
+  //Load fonts for use with nativebase
   async componentWillMount(){
     await Expo.Font.loadAsync({
     'Roboto': require('native-base/Fonts/Roboto.ttf'),
@@ -68,28 +69,28 @@ class YodaFetch extends Component{
 
 
   async getYoda(){
-    console.log("Initial state:", store.getState())
+  //  console.log("Initial state:", store.getState())
     await this.props.fetchPost(this.state.yoda_word)
-    console.log("Final state:", store.getState())
+//    console.log("Final state:", store.getState())
   }
 
 
   renderContent=()=>{
     return(
-      <View style = {styles.container}>
-      <Container>
-        <Content>
 
-          <Card>
-            <CardItem>
-        <Text>I say: </Text>
-            </CardItem>
-          </Card>
+      <Container>
+
+        <Header>
+          <Title>Yoda Translator</Title>
+        </Header>
+
+        <Content>
 
         <Card>
           <CardItem>
+              <Text>I say: </Text>
                 <InputGroup borderType = "rounded">
-                       <Input  placeholder="I say"
+                       <Input  placeholder=""
                        onChangeText={(yoda_word) => this.setState({yoda_word})}
                        value = {this.state.yoda_word} />
                       <Icon name="ios-happy" />
@@ -118,11 +119,10 @@ class YodaFetch extends Component{
           </CardItem>
         </Card>
 
-
         </Content>
 
       </Container>
-      </View>
+
     );
   }
 
@@ -150,10 +150,9 @@ mapStateToProps = (state) => {
   return{
     fetched_post: state.postsReducer.fetched_post,
     isLoading: state.postsReducer.isLoading,
-    errorMessage:state.postsReducer.errorMessage,
-    post: state.postsReducer.post,
     loadingText: state.postsReducer.loadingText,
+    yoda_word: state.postsReducer.yoda_word,
   }
 }
 
-export default connect(mapStateToProps, actions)(YodaFetch)
+export default connect(mapStateToProps, actions)(Yoda)
