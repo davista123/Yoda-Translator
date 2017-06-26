@@ -20,7 +20,7 @@ Speak like Yoda, you will learn. Help you in time, this app will.
 
 ## Gives a Damn? Who does?
 
-``` Well, basically anyone who is new to redux or expo or wants to see how react-native and redux are incorporated into an app that is not a todo-list for once (what, really?!?) can reference this project or tweak around it. Most of the implementations are basic and are foundational to building a relativey well-designed and simple application.```
+``` Well, basically anyone who is new to redux or expo or wants to see how react-native and redux are incorporated into an app that is not a todo-list for once (what, really?!?) can reference this project or tweak around it. Most of the implementations are basic and foundational to building a relativey well-designed and simple application.```
 
 
 ## Okay, I'm interested, so what could I learn?
