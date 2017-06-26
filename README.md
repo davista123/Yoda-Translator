@@ -25,4 +25,4 @@ Speak like Yoda, you will learn. Help you in time, this app will.
 
 ## Okay, I'm interested, so what could I learn?
 
-``` You could learn the basics of react-native and redux as well as how to deal with asynchronous events in redux. Additionally, the project is desinged in a scalable format such that each folder has its own components, actions and reducer though shares a common store with the alternates. Or if you're a seasoned pro, you could cultivate it to do much cooler things (like convert "yodafied" text into an alternate language and enable voice capabilities as well)```
+``` You could learn the basics of react-native and redux as well as how to deal with asynchronous events in redux. Additionally, the project is designed in a scalable format such that each folder has its own components, actions and reducer though shares a common store with the alternates. Or if you're a seasoned pro, you could cultivate it to do much cooler things (like convert "yodafied" text into an alternate language and enable voice capabilities as well)```
