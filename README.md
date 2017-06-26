@@ -8,7 +8,7 @@ Speak like Yoda, you will learn. Help you in time, this app will.
 
 ## Installation
 
-***1. cd/Yoda-Translator***
+***1. cd Yoda-Translator/***
 
 
 ***2. npm install***
