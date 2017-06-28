@@ -2,3 +2,5 @@ export const FETCH_RESPONSE =  'FETCH_RESPONSE';
 export const FETCH_RESPONSE_SUCCESS =  'FETCH_RESPONSE_SUCCESS';
 export const FETCH_RESPONSE_FAIL =  'FETCH_RESPONSE_FAIL';
 export const IS_LOADING =  'IS_LOADING';
+export const FONT_LOADED =  'FONT_LOADED';
+export const GET_WORD =  'GET_WORD';

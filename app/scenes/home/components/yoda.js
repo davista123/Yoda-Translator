@@ -39,10 +39,6 @@ class Yoda extends Component{
 
   constructor(props){
     super(props);
-    this.state = {
-      yoda_word: '',
-      fontLoaded: false
-    }
     this.getYoda = this.getYoda.bind(this)
 
   }
@@ -53,11 +49,12 @@ class Yoda extends Component{
     'Roboto': require('native-base/Fonts/Roboto.ttf'),
     'Roboto_medium': require('native-base/Fonts/Roboto_medium.ttf'),
   });
-    this.setState({
-      fontLoaded:true
-    })
+    this.loadFont()
   }
 
+    loadFont=()=>{
+      return this.props.fontIsLoaded()
+    }
 
   renderLoading = () => {
     return (
@@ -70,7 +67,7 @@ class Yoda extends Component{
 
   async getYoda(){
   //  console.log("Initial state:", store.getState())
-    await this.props.fetchPost(this.state.yoda_word)
+    await this.props.fetchPost(this.props.yoda_word)
 //    console.log("Final state:", store.getState())
   }
 
@@ -91,8 +88,8 @@ class Yoda extends Component{
               <Text>I say: </Text>
                 <InputGroup borderType = "rounded">
                        <Input  placeholder=""
-                       onChangeText={(yoda_word) => this.setState({yoda_word})}
-                       value = {this.state.yoda_word} />
+                       onChangeText={(yoda_word) => this.props.getWord(yoda_word)}
+                       value = {this.props.yoda_word} />
                       <Icon name="ios-happy" />
                 </InputGroup>
             </CardItem>
@@ -128,7 +125,7 @@ class Yoda extends Component{
 
 
   render(){
-    if(!this.state.fontLoaded){
+    if(!this.props.fontLoad){
       return this.renderLoading();
     }
     return(
@@ -152,6 +149,7 @@ mapStateToProps = (state) => {
     isLoading: state.postsReducer.isLoading,
     loadingText: state.postsReducer.loadingText,
     yoda_word: state.postsReducer.yoda_word,
+    fontLoad: state.postsReducer.fontLoad,
   }
 }
 
