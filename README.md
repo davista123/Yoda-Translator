@@ -25,4 +25,4 @@ Speak like Yoda, you will learn. Help you in time, this app will.
 
 ## Learning opportunities
 
-``` You could learn the basics of react-native and redux as well as how to deal with asynchronous events in redux. Additionally, the project is designed in a scalable format such that each folder has its own components, actions and reducer though shares a common store with the alternates. 
+``` You could learn the basics of react-native and redux as well as how to deal with asynchronous events in redux. Additionally, the project is designed in a scalable format such that each folder has its own components, actions and reducer though shares a common store with the alternates.``` 
