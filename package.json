@@ -1,7 +1,7 @@
 {
-  "name": "recipify",
+  "name": "Yoda Transloator",
   "version": "0.0.0",
-  "description": "Hello Expo!",
+  "description": "Translates plain text to yoda format",
   "author": null,
   "private": true,
   "main": "main.js",
