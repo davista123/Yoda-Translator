@@ -9,10 +9,12 @@ Speak like Yoda, you will learn. Help you in time, this app will.
 
 ## Installation
 
-***1. cd Yoda-Translator/***
+***1. git clone https://github.com/davista123/Yoda-Translator.git***
+
+***2. cd Yoda-Translator/***
 
 
-***2. npm install***
+***3. npm install***
 
 
-***3. exp start***
+***4. exp start***
